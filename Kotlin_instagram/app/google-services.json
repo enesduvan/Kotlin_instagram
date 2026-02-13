@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "231370813516",
+    "project_id": "kotlininstadb",
+    "storage_bucket": "kotlininstadb.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:231370813516:android:fea6d346b232ac2ba2c4e9",
+        "android_client_info": {
+          "package_name": "com.enesduvan.kotlin_instagram"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzTR-ESyWcyZcZ2BOo2sENLtg2eJ03Z_A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

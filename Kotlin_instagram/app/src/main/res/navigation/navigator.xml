@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigator"
+    app:startDestination="@id/signinFragment">
+    <fragment
+        android:id="@+id/kayitolFragment"
+        android:name="com.enesduvan.kotlin_instagram.KayitolFragment"
+        android:label="fragment_kayitol"
+        tools:layout="@layout/fragment_kayitol" >
+        <action
+            android:id="@+id/action_kayitolFragment_to_test_activity"
+            app:destination="@id/test_activity" />
+        <action
+            android:id="@+id/action_kayitolFragment_to_signinFragment"
+            app:destination="@id/signinFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signinFragment"
+        android:name="com.enesduvan.kotlin_instagram.SigninFragment"
+        android:label="fragment_signin"
+        tools:layout="@layout/fragment_signin" >
+        <action
+            android:id="@+id/action_signinFragment_to_kayitolFragment"
+            app:destination="@id/kayitolFragment" />
+    </fragment>
+    <activity
+        android:id="@+id/test_activity"
+        android:name="com.enesduvan.kotlin_instagram.test_activity"
+        android:label="activity_test"
+        tools:layout="@layout/activity_test" />
+</navigation>
