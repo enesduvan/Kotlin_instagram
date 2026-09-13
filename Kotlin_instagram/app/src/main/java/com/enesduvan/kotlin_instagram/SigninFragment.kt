@@ -7,6 +7,7 @@ import com.enesduvan.kotlin_instagram.databinding.FragmentSigninBinding
 import com.google.firebase.auth.FirebaseAuth
 import android.content.Intent
 import android.widget.Toast
+import androidx.navigation.Navigation
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
 
@@ -35,7 +36,7 @@ class SigninFragment : Fragment(R.layout.fragment_signin) {
         }
         binding.textView.setOnClickListener{
             val action = SigninFragmentDirections.actionSigninFragmentToKayitolFragment()
-            //resimi incele d
+            Navigation.findNavController(it).navigate(action)
         }
 
 
@@ -50,13 +51,16 @@ class SigninFragment : Fragment(R.layout.fragment_signin) {
 
         val email = binding.emailText.text.toString()
         val password = binding.passwordText.text.toString()
-        var name = ""
-        for (item in email){
-            if(item == '@'){
-                // burdan sonrası artık @gmail.com
-                break
+
+        var name =""
+        if (name == "") {
+            for (item in email) {
+                if (item == '@') {
+                    // burdan sonrası artık @gmail.com
+                    break
+                }
+                name += item
             }
-            name += item
         }
         if (email.isNotEmpty())
         {

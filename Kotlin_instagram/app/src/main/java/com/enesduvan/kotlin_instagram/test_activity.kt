@@ -13,8 +13,10 @@ class test_activity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         binding = ActivityTestBinding.inflate(layoutInflater)
         val view = binding.root
+
         setContentView(view)
         replace_fragment(HomeFragment() )
         binding.bottomNavigationView2.setOnItemSelectedListener {

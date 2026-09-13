@@ -1,0 +1,18 @@
+## Android & Gradle Geçici Dosyaları
+*.iml
+.gradle/
+build/
+captures/
+.externalNativeBuild
+.cxx/
+local.properties
+
+## Android Studio / IntelliJ IDEA Önbellek Dosyaları
+.idea/
+.kotlin/
+*.log
+*.hprof
+
+## OS Geçici Dosyaları
+.DS_Store
+Thumbs.db

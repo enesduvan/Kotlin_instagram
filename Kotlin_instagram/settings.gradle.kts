@@ -11,8 +11,11 @@ pluginManagement {
         gradlePluginPortal()
     }
     plugins {
-        id("androidx.navigation.safeargs.kotlin") version "2.7.7"
+        id("androidx.navigation.safeargs.kotlin") version "2.9.6"
     }
+}
+plugins {
+    id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
 }
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)

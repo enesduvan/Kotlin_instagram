@@ -31,16 +31,10 @@ import java.io.ByteArrayOutputStream
 import java.util.UUID
 
 class UploadFragment : Fragment(R.layout.fragment_upload) {
-
-    //class UploadFragment : Fragment(R.layout.fragment_upload)
-    //R.layout.Fragment ismi eklenecek
-
     private var _binding: FragmentUploadBinding? = null
-    //Fragment ismi
     private val binding get() = _binding!!
     private lateinit var activityResultLauncher : ActivityResultLauncher<Intent>
     private lateinit var permission_launcher: ActivityResultLauncher <String>
-
     var image_uri : Uri? = null
     private lateinit var auth: FirebaseAuth
     private lateinit var firestore: FirebaseFirestore
@@ -50,7 +44,6 @@ class UploadFragment : Fragment(R.layout.fragment_upload) {
         super.onViewCreated(view, savedInstanceState)
 
         _binding = FragmentUploadBinding.bind(view)
-        //Fragment ismi
         binding.imageView5.setOnClickListener { select_image() }
         register_launcher()
         binding.uploadButton4.setOnClickListener { upload() }
@@ -188,14 +181,19 @@ class UploadFragment : Fragment(R.layout.fragment_upload) {
                     if(auth.currentUser != null) {
                         //kullanıcı giriş yaptıysa
                         val email = auth.currentUser!!.email!!
-                        var name = ""
-                        for (item in email){
-                            if(item == '@'){
-                                // burdan sonrası artık @gmail.com
-                                break
+                        //aktarım hedefim
+
+                        var name = AppData.kullaniciAdi.toString()
+                        if (name == ""){
+                            for (item in email){
+                                if(item == '@'){
+                                    // burdan sonrası artık @gmail.com
+                                    break
+                                }
+                                name += item
                             }
-                            name += item
                         }
+
 
                         hash_map.put("download_url", download_url)
                         hash_map.put("name", name)

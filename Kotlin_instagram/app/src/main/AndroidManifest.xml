@@ -14,30 +14,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Kotlin_instagram">
+
+        <!-- BAŞLANGIÇ ACTIVITY -->
         <activity
             android:name=".Main_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".KayitolActivity"
-            android:exported="false" />
-        <activity
-            android:name=".test_activity"
-            android:exported="false" />
-        <activity
-            android:name=".UploadActivity"
-            android:exported="false" />
-        <activity
-            android:name=".FeedActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-    </application>
 
+        </activity>
+
+        <activity android:name=".KayitolActivity" android:exported="false" />
+        <activity android:name=".test_activity" android:exported="false" />
+        <activity android:name=".UploadActivity" android:exported="false" />
+        <activity android:name=".FeedActivity" android:exported="false" />
+
+        <!-- ARTIK LAUNCHER DEĞİL -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+
+    </application>
 </manifest>

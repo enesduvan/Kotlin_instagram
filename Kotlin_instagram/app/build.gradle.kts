@@ -8,7 +8,7 @@ plugins {
 
 android {
     namespace = "com.enesduvan.kotlin_instagram"
-    compileSdk = 36 // Not: 36 çok yeni, hata alırsanız 34 veya 35'e çekebilirsiniz.
+    compileSdk = 36// Not: 36 çok yeni, hata alırsanız 34 veya 35'e çekebilirsiniz.
 
     defaultConfig {
         applicationId = "com.enesduvan.kotlin_instagram"
@@ -29,15 +29,13 @@ android {
         }
     }
 
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
-
-
     buildFeatures {
         viewBinding = true
     }
+}
+
+kotlin {
+    jvmToolchain(11)
 }
 
 dependencies {
@@ -58,6 +56,7 @@ dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.fragment)
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

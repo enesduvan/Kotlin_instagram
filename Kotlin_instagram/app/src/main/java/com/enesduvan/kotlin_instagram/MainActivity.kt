@@ -22,7 +22,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
+
         setContentView(view)
+
 
         //----------değişken tanımlamalar
         auth = Firebase.auth
@@ -50,7 +52,11 @@ class MainActivity : AppCompatActivity() {
                navController.navigate(R.id.blankFragment2) // veya action id
 
            }*/
+        binding.button2.setOnClickListener {
+            val intent = Intent(this@MainActivity, Main_Activity::class.java)
+            startActivity(intent)
 
+        }
     }
 
     override fun onStart() {

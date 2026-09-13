@@ -12,9 +12,14 @@
         <action
             android:id="@+id/action_kayitolFragment_to_test_activity"
             app:destination="@id/test_activity" />
+
         <action
             android:id="@+id/action_kayitolFragment_to_signinFragment"
             app:destination="@id/signinFragment" />
+        <action
+            android:id="@+id/action_kayitolFragment_to_uploadFragment"
+            app:destination="@id/uploadFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/signinFragment"
@@ -30,4 +35,9 @@
         android:name="com.enesduvan.kotlin_instagram.test_activity"
         android:label="activity_test"
         tools:layout="@layout/activity_test" />
+    <fragment
+        android:id="@+id/uploadFragment"
+        android:name="com.enesduvan.kotlin_instagram.UploadFragment"
+        android:label="fragment_upload"
+        tools:layout="@layout/fragment_upload" />
 </navigation>

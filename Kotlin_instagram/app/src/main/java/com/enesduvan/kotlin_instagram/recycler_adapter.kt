@@ -6,6 +6,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.enesduvan.kotlin_instagram.databinding.RecyclerRowBinding
 import com.squareup.picasso.Picasso
 
+object AppData_name {
+    var kullaniciAdi: String? = null
+}
 class recycler_adapter (val recycler_list : ArrayList<Post>): RecyclerView.Adapter<recycler_adapter.Recycler_holder> (){
 
 
@@ -26,7 +29,7 @@ class recycler_adapter (val recycler_list : ArrayList<Post>): RecyclerView.Adapt
             position: Int
         ) {
             holder.binding.nameText.text = recycler_list.get(position).name
-
+            AppData_name.kullaniciAdi = holder.binding.nameText.text.toString()
             holder.binding.commentText.text = recycler_list.get(position).comment
             //liste içindeki isimleri al recyler içine yaz
             Picasso.get().load(recycler_list.get(position).download_url).into(holder.binding.imageView)

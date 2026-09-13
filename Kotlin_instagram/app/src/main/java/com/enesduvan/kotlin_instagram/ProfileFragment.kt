@@ -13,15 +13,13 @@ import com.google.firebase.auth.auth
 
 
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
-        //class UploadFragment : Fragment(R.layout.fragment_upload)
-            //R.layout.Fragment ismi eklenecek
-
             private var _binding: FragmentProfileBinding? = null
             //Fragment ismi
             private lateinit var auth: FirebaseAuth
             private val binding get() = _binding!!
             var name_true = ""
             var biograpy_true = ""
+            var name = ""
 
             override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
                 super.onViewCreated(view, savedInstanceState)
@@ -33,7 +31,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                 binding.duzenleButtonProfile.setOnClickListener { profil_duzenle() }
                 binding.duzenleButtonProfile2.setOnClickListener { profil_save() }
                 auth = Firebase.auth
-                binding.nameTextProfile.text = "enes"
+                name = AppData_name.kullaniciAdi.toString()
+                binding.nameTextProfile.text = name
                 binding.biyografiTextProfile.text = "biograpy"
             }
 
@@ -43,7 +42,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             }
     fun log_out(){
         auth.signOut()
-        val intent = Intent(requireActivity(), MainActivity::class.java)
+        val intent = Intent(requireActivity(), Main_Activity::class.java)
         startActivity(intent)
         requireActivity().finish()
     }

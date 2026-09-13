@@ -7,12 +7,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.Navigation
 import com.enesduvan.kotlin_instagram.databinding.ActivityMainBinding
 import com.enesduvan.kotlin_instagram.databinding.FragmentKayitolBinding
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
 
+object AppData {
+    var kullaniciAdi: String? = null
+}
 class KayitolFragment : Fragment(R.layout.fragment_kayitol) {
 
     private var _binding: FragmentKayitolBinding? = null
@@ -38,11 +42,9 @@ class KayitolFragment : Fragment(R.layout.fragment_kayitol) {
                     requireActivity().finish()
                 }
                 binding.singupbutton.setOnClickListener {
-                    //kayıt ol button
                     signup()
                 }
                 binding.backbutton.setOnClickListener {
-                    //geri buton
                     back()
                 }
             }
@@ -52,59 +54,57 @@ class KayitolFragment : Fragment(R.layout.fragment_kayitol) {
                 _binding = null
             }
     fun back(){
-
+                val action = KayitolFragmentDirections.actionKayitolFragmentToSigninFragment()
+                Navigation.findNavController(requireView()).navigate(action)
     }
 
 
     fun signup(){
         val email = binding.emailText.text.toString()
         val password = binding.passwordText.text.toString()
-        var name = ""
-        for (item in email){
-            if(item == '@'){
-                // burdan sonrası artık @gmail.com
-                break
-            }
-            name += item
-        }
-        if (email.isNotEmpty())
-        {
-            if (password.isNotEmpty()){
-                password_array.add("@")
-                password_array.add(".")
-                password_array.add(",")
-                password_array.add("/")
-                password_array.add("+")
-                var x = 0
-                for (item in password_array){
-                    if(item in password){
-                        auth.createUserWithEmailAndPassword(email,password).addOnSuccessListener {
-                            Toast.makeText(requireActivity(), "Hoşgeldin "+name+" !" ,Toast.LENGTH_SHORT).show()
-                            // kullanıcı başarıyla oluştu
-                            val intent = Intent(requireActivity(), test_activity::class.java)
-                            startActivity(intent)
-                            requireActivity().finish()
-                        }.addOnFailureListener {
-                            // kullanıcı oluşmadı
-                            Toast.makeText(requireActivity(), "Hata kullanıcı oluşturulamadı !", Toast.LENGTH_SHORT).show()
-                        }
-                        x = 1
-                        break
-                    }
-                }
-                if(x == 0){
-                    Toast.makeText(requireActivity(), "Lütfen şifrenizde ( @ , . , + , / ) karakterleri kullanın !", Toast.LENGTH_SHORT).show()
-                }
+        val name = binding.nameText.text.toString()
+        AppData.kullaniciAdi = name
 
+        if(name.isNotEmpty()){
+            if (email.isNotEmpty()) {
+                if (password.isNotEmpty()){
+
+                    password_array.add("@")
+                    password_array.add(".")
+                    password_array.add(",")
+                    password_array.add("/")
+                    password_array.add("+")
+                    var x = 0
+                    for (item in password_array){
+                        if(item in password){
+                            auth.createUserWithEmailAndPassword(email,password).addOnSuccessListener {
+                                Toast.makeText(requireActivity(), "Hoşgeldin "+name+" !" ,Toast.LENGTH_SHORT).show()
+                                // kullanıcı başarıyla oluştu
+                                /*val intent = Intent(requireActivity(), test_activity::class.java)
+                                startActivity(intent)
+                                requireActivity().finish()*/
+
+                                val action = KayitolFragmentDirections.actionKayitolFragmentToTestActivity()
+                                Navigation.findNavController(requireView()).navigate(action)
+                            }.addOnFailureListener {
+                                // kullanıcı oluşmadı
+                                Toast.makeText(requireActivity(), "Hata kullanıcı oluşturulamadı !", Toast.LENGTH_SHORT).show()
+                            }
+                            x = 1
+                            break
+                        }
+                    }
+                    if(x == 0){
+                    Toast.makeText(requireActivity(), "Lütfen şifrenizde ( @ , . , + , / ) karakterleri kullanın !", Toast.LENGTH_SHORT).show()
+                    }
             }else{
                 Toast.makeText(requireActivity(), "Lütfen şifre alanını boş bırakmayın !", Toast.LENGTH_SHORT).show()
             }
-
         }else{
             Toast.makeText(requireActivity(), "Lütfen E-mail alanını boş bırakmayın !", Toast.LENGTH_SHORT).show()
-
+        }
+    }else{
+            Toast.makeText(requireActivity(),"Lütfen adınızı giriniz", Toast.LENGTH_LONG).show()
         }
     }
-
-
 }
